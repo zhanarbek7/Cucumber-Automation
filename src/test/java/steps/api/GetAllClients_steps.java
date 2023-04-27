@@ -2,6 +2,8 @@ package steps.api;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
+import utilities.APIRunner;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,12 +14,13 @@ public class GetAllClients_steps {
         Map<String, Object> params = new HashMap<>();
         params.put("isArchived", isArchived);
         params.put("page", page);
-        params.put("size", params);
-
+        params.put("size", size);
+        APIRunner.runGET(path, params);
     }
 
     @Then("user verfies that total number of clients should be {string}")
     public void userVerfiesThatTotalNumberOfClientsShouldBe(String totalExpected) {
-
+        int numberOfClients = APIRunner.getCustomResponse().getResponses().size();
+        Assert.assertEquals(totalExpected, String.valueOf(numberOfClients));
     }
 }
