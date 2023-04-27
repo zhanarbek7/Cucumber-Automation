@@ -6,8 +6,8 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class CustomResponse {
+@JsonIgnoreProperties
+public class  CustomResponse {
 
     private String jwt_token;
     private String message;
