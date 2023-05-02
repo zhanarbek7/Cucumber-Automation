@@ -1,5 +1,7 @@
 package steps.ui;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import pages.CashwiseLoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

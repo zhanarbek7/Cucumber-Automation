@@ -1,17 +1,20 @@
 package steps.ui;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import utilities.Driver;
 
 import java.util.List;
 
 public class Google_steps {
-
     @Given("I am on the google page")
     public void i_am_on_the_google_page() {
         Driver.getDriver().get("https://google.com");

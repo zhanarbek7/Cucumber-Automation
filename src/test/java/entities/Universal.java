@@ -10,4 +10,6 @@ public class Universal {
     private String nameTag;
     private String companyName;
     private Universal company;
+
+    private String client_id;
 }

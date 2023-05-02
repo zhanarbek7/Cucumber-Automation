@@ -1,7 +1,10 @@
 package steps.ui;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import pages.CashwiseLoginPage;
-import io.cucumber.java.AfterAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,13 +14,22 @@ import utilities.Config;
 import utilities.Driver;
 import utilities.Flow;
 
+import java.sql.DriverManager;
 import java.util.List;
 
 public class CashwiseBenefits_steps {
 
-    @AfterAll
-    public static void afterAll(){
-        Driver.getDriver().quit();
+    @After(order = 1)
+    public void takeScraenshotOnFailure(Scenario scenario) {
+
+        if (scenario.isFailed()) {
+
+            TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+
+            byte[] src = ts.getScreenshotAs(OutputType.BYTES.BYTES);
+            scenario.attach(src, "image/png", "screenshot");
+        }
+
     }
 
     @Given("user is on cashwise application")
