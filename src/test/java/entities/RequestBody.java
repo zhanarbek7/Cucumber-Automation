@@ -2,6 +2,8 @@ package entities;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class RequestBody {
 
@@ -24,5 +26,7 @@ public class RequestBody {
     private int service_type_id;
     private int category_id;
     private String product_description;
+    private String client_name;
+    private List<String> tags_id;
 
 }

@@ -8,10 +8,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "steps",
-        plugin = {"pretty","html:target/cucumber-reports/report.html"},
-        monochrome = true,
-        publish = true,
-        tags = "@SignUp or @google"
+//        plugin = {"pretty","html:target/cucumber-reports/report.html"},
+//        monochrome = true,
+//        publish = true,
+        dryRun = false
 )
 
 //json:target/cucumber-reports/report2.json

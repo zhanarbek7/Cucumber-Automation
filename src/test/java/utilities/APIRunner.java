@@ -91,12 +91,18 @@ public class APIRunner {
         }
     }
 
-    public static void runPost(String path, RequestBody requestBody){
+    public static void runPost(String path, RequestBody requestBody) {
         String token = Config.getValue("cashwiseToken");
         String url = Config.getValue("cashwiseBackend") + path;
         Response response = RestAssured.given().auth().oauth2(token)
                 .contentType(ContentType.JSON)
                 .body(requestBody).post(url);
+        ObjectMapper m = new ObjectMapper();
+        try {
+            System.out.println(m.writeValueAsString(requestBody));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("POST status: "+response.statusCode());
         try{
             ObjectMapper mapper = new ObjectMapper();

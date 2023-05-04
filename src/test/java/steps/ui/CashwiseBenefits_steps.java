@@ -2,6 +2,8 @@ package steps.ui;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
+import io.restassured.RestAssured;
+import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import pages.CashwiseLoginPage;
@@ -21,7 +23,6 @@ public class CashwiseBenefits_steps {
 
     @After(order = 1)
     public void takeScraenshotOnFailure(Scenario scenario) {
-
         if (scenario.isFailed()) {
 
             TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
