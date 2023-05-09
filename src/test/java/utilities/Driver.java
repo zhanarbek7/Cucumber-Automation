@@ -29,7 +29,6 @@ public class Driver {
                 return driver;
             } else if (browser.equalsIgnoreCase("firefox")) {
                 FirefoxOptions co = new FirefoxOptions();
-                co.addArguments("--remote-allow-origins=*");
                 if (Config.getValue("headless").equalsIgnoreCase("true")) {
                     co.addArguments("--headless=new");
                 }
