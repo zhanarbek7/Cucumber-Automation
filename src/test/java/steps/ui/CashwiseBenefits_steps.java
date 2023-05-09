@@ -21,18 +21,6 @@ import java.util.List;
 
 public class CashwiseBenefits_steps {
 
-    @After(order = 1)
-    public void takeScraenshotOnFailure(Scenario scenario) {
-        if (scenario.isFailed()) {
-
-            TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
-
-            byte[] src = ts.getScreenshotAs(OutputType.BYTES.BYTES);
-            scenario.attach(src, "image/png", "screenshot");
-        }
-
-    }
-
     @Given("user is on cashwise application")
     public void userIsOnCashwiseApplication() {
         Driver.getDriver().get(Config.getValue("cashwiseURL"));

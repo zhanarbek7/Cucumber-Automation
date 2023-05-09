@@ -1,5 +1,5 @@
+@smoke
 Feature: Benefit offers
-
   Scenario: Verifying the offer benefits on homepage
 
     Given user is on cashwise application

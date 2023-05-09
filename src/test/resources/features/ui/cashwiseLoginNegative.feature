@@ -1,3 +1,4 @@
+#@smoke
 Feature: Cashwise login
 
   Background: Login and log in form

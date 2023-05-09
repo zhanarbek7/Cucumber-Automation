@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
 
@@ -27,14 +28,19 @@ public class Driver {
                 driver.manage().window().maximize();
                 return driver;
             } else if (browser.equalsIgnoreCase("firefox")) {
-                driver = new FirefoxDriver();
+                FirefoxOptions co = new FirefoxOptions();
+                co.addArguments("--remote-allow-origins=*");
+                if (Config.getValue("headless").equalsIgnoreCase("true")) {
+                    co.addArguments("--headless=new");
+                }
+                driver = new FirefoxDriver(co);
                 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                 driver.manage().window().maximize();
                 return driver;
             } else {
                 System.out.println("Invalid Browser Type. Launching Default Browser");
-                driver = new ChromeDriver();
+                driver = new FirefoxDriver();
                 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                 driver.manage().window().maximize();

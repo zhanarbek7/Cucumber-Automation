@@ -1,4 +1,3 @@
-@search @smoke @google @regression
 Feature: Google search
   #UserStory: SUP-93
 
