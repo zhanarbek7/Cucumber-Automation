@@ -1,13 +1,11 @@
 package steps;
 
 import io.cucumber.java.After;
-import io.cucumber.java.AfterAll;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import utilities.Driver;
 import utilities.MyLogger;
-import utilities.StorageService;
 
 public class CommonHooks {
 

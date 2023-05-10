@@ -5,14 +5,17 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import entities.AwsCredentials;
 
-public class StorageConfig {
+import java.util.Objects;
 
-    private final static String accessKey = Config.getValue("cloud.aws.credentials.access-key");
+public class S3Config {
 
-    private final static String accessSecret = Config.getValue("cloud.aws.credentials.secret-key");
+    private final static String accessKey = Objects.requireNonNull(SecretsManager.getSecrets()).getAccess_key();
 
-    private final static String region = Config.getValue("cloud.aws.region.static");
+    private final static String accessSecret = Objects.requireNonNull(SecretsManager.getSecrets()).getSecret_key();
+
+    private final static String region = Objects.requireNonNull(SecretsManager.getSecrets()).getRegion();
 
     private static AmazonS3 generateS3client(){
         AWSCredentials credentials = new BasicAWSCredentials(accessKey, accessSecret);
