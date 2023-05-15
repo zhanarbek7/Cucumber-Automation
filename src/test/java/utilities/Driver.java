@@ -20,7 +20,7 @@ public class Driver {
                 ChromeOptions co = new ChromeOptions();
                 co.addArguments("--remote-allow-origins=*");
                 if (Config.getValue("headless").equalsIgnoreCase("true")) {
-                    co.addArguments("--headless=new");
+                    co.addArguments("--headless");
                 }
                 driver = new ChromeDriver(co);
                 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
@@ -28,9 +28,11 @@ public class Driver {
                 driver.manage().window().maximize();
                 return driver;
             } else if (browser.equalsIgnoreCase("firefox")) {
+                System.setProperty("webdriver.firefox.logfile", "NUL");
                 FirefoxOptions co = new FirefoxOptions();
+                co.addPreference("javascript.options.showInConsole", false);
                 if (Config.getValue("headless").equalsIgnoreCase("true")) {
-                    co.addArguments("--headless=new");
+                    co.addArguments("--headless");
                 }
                 driver = new FirefoxDriver(co);
                 driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));

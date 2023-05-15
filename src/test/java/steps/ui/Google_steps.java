@@ -35,7 +35,6 @@ public class Google_steps {
     @Then("I should see only {string} related images")
     public void i_should_see_only_related_images(String word) {
         System.out.println("Verifying the images for: " + word);
-        Assert.fail("On purpose");
     }
 
 
