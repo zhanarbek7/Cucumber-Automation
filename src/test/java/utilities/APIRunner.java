@@ -65,12 +65,12 @@ public class APIRunner {
         String url = Config.getValue("cashwiseBackend") + path;
         Response response = RestAssured.given().auth().oauth2(token).delete(url);
         System.out.println("DELETE Status: "+response.statusCode());
-        try{
             ObjectMapper mapper = new ObjectMapper();
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        try {
             customResponse = mapper.readValue(response.body().asString(), CustomResponse.class);
         } catch (JsonProcessingException e) {
-            System.out.println("Couldn't convert JSON to CustomResponse");
+            throw new RuntimeException(e);
         }
     }
 
