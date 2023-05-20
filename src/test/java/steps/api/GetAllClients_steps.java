@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import utilities.APIRunner;
+import utilities.MyLogger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +21,12 @@ public class GetAllClients_steps {
 
     @Then("user verifies that total number of clients should be {string}")
     public void userVerfiesThatTotalNumberOfClientsShouldBe(String totalExpected) {
-        int numberOfClients = APIRunner.getCustomResponse().getResponses().size();
-        Assert.assertEquals(totalExpected, String.valueOf(numberOfClients));
+        try{
+            int numberOfClients = APIRunner.getCustomResponse().getResponses().size();
+            Assert.assertEquals(totalExpected, String.valueOf(numberOfClients));
+        }catch(Exception e){
+            MyLogger.error("Exception happened");
+            Assert.fail();
+        }
     }
 }
