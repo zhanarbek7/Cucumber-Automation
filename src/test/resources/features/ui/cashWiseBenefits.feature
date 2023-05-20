@@ -1,4 +1,3 @@
-@smoke
 Feature: Benefit offers
   Scenario: Verifying the offer benefits on homepage
 

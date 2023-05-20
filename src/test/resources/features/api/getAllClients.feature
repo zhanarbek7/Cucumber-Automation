@@ -1,3 +1,4 @@
+@smoke
 Feature: GET Clients API
 
   Scenario: Verifying the number of clients
