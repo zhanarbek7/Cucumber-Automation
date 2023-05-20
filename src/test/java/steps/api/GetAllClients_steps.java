@@ -18,7 +18,7 @@ public class GetAllClients_steps {
         APIRunner.runGET(path, params);
     }
 
-    @Then("user verfies that total number of clients should be {string}")
+    @Then("user verifies that total number of clients should be {string}")
     public void userVerfiesThatTotalNumberOfClientsShouldBe(String totalExpected) {
         int numberOfClients = APIRunner.getCustomResponse().getResponses().size();
         Assert.assertEquals(totalExpected, String.valueOf(numberOfClients));
