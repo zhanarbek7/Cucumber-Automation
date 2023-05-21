@@ -19,12 +19,15 @@ public class GetAllClients_steps {
         APIRunner.runGET(path, params);
     }
 
-    @Then("user verifies that total number of clients should be {string}")
+
+
+    @Then("user verfies that total number of clients should be {string}")
     public void userVerfiesThatTotalNumberOfClientsShouldBe(String totalExpected) {
         try{
             int numberOfClients = APIRunner.getCustomResponse().getResponses().size();
             Assert.assertEquals(totalExpected, String.valueOf(numberOfClients));
         }catch(Exception e){
+            System.out.println("EXCEPTIOn432432423432");
             MyLogger.error("Exception happened");
             Assert.fail();
         }
