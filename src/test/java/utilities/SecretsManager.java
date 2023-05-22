@@ -16,9 +16,9 @@ public class SecretsManager {
     public static AwsCredentials awsCredentials;
 
     public static AwsCredentials getSecrets() {
-        String secretName = "iamaccess";
-        Region region = Region.US_EAST_2;
-        String profileName = "zhanarbek";
+        String secretName = Config.getValue("aws.secret_name");
+        Region region = Region.of(Config.getValue("aws.cli.region"));
+        String profileName = Config.getValue("aws.cli.profile_name");
         if(awsCredentials==null){
 
             // Create an instance of AwsCredentialsProvider using the default credentials provider chain
