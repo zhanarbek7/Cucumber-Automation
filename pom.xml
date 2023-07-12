@@ -30,10 +30,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
+                    <testFailureIgnore>false</testFailureIgnore>
                     <includes>
                         <include>runners/CucumberRunner.java</include>
-                        <include>utilities/S3UploadReports.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
                     <properties>
