@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,5 +19,11 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
-      - name: Build and test
-        run: mvn clean test
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Install dependencies
+        run: mvn clean install
+
+      - name: Run Selenium tests
+        run: mvn test
